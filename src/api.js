@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {API_BASE_URL} from './constants'
-import * as https from "node:https";
+import * as https from "https";
 
 // const API_URL = 'http://127.0.0.1:8080'; // Замените на URL вашего бэкенда
 const agent = new https.Agent({
