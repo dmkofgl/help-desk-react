@@ -1,1 +1,1 @@
-export const API_BASE_URL = 'https://152.70.164.64';
+export const API_BASE_URL = 'https://mental-health.duckdns.org';
