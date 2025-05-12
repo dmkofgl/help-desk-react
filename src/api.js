@@ -1,18 +1,12 @@
 import axios from 'axios';
 import {API_BASE_URL} from './constants'
-import * as https from "https";
 
-// const API_URL = 'http://127.0.0.1:8080'; // Замените на URL вашего бэкенда
-const agent = new https.Agent({
-  rejectUnauthorized: false  // Отключаем проверку сертификатов
-});
 // Функция для проверки токена
 export const validateToken = async (token) => {
   try {
     const response = await axios.post(`${API_BASE_URL}/validate-token`, {},
         {
-          headers: {Authorization: `Bearer ${token}`},
-          httpsAgent: agent
+          headers: {Authorization: `Bearer ${token}`}
         });
     return response.data.valid; // Если токен валидный, возвращаем true
   } catch (error) {
@@ -25,8 +19,7 @@ export const validateToken = async (token) => {
 export const getRequests = async (token) => {
   try {
     const response = await axios.get(`${API_BASE_URL}/requests`, {
-      headers: {Authorization: `Bearer ${token}`},
-      httpsAgent: agent
+      headers: {Authorization: `Bearer ${token}`}
     });
     return response.data; // Список запросов
   } catch (error) {
@@ -40,8 +33,7 @@ export const getRequest = async (token, id) => {
   try {
 
     const response = await axios.get(`${API_BASE_URL}/request/${id}`, {
-      headers: {Authorization: `Bearer ${token}`},
-      httpsAgent: agent
+      headers: {Authorization: `Bearer ${token}`}
     });
     return response.data; // Список запросов
   } catch (error) {
@@ -57,8 +49,7 @@ export const respondToRequest = async (token, requestId, responseText) => {
         `${API_BASE_URL}/respond`,
         {requestId, responseText},
         {
-          headers: {Authorization: `Bearer ${token}`},
-          httpsAgent: agent
+          headers: {Authorization: `Bearer ${token}`}
         }
     );
   } catch (error) {
